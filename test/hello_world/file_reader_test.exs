@@ -2,6 +2,7 @@ defmodule HelloWorld.FileReaderTest do
   use ExUnit.Case
   import Mock
 
+  doctest HelloWorld.FileReader
   test "Passing a file give a string" do
     str = HelloWorld.FileReader.get_strings_to_tweet(Path.join("#{:code.priv_dir(:hello_world)}", "sample.txt"))
 
@@ -9,7 +10,7 @@ defmodule HelloWorld.FileReaderTest do
   end
 
   test "Will not return string too long" do
-    str = HelloWorld.FileReader.get_strings_to_tweet(Path.join("#{:code.priv_dir(:hello_world)}", "/test/to_long.txt"))
+    str = HelloWorld.FileReader.get_strings_to_tweet(Path.join("#{:code.priv_dir(:hello_world)}", "/test/too_long.txt"))
 
     assert str == "Short Line"
   end
